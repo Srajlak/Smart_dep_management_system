@@ -26,7 +26,7 @@ app.controller("LoginController", function ($scope, $http) {
                 );
 
                 // Go to dashboard
-                window.location.href = "index.html";
+                window.location.href = "dashboard.html";
 
             })
             .catch(function (error) {

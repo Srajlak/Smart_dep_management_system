@@ -19,68 +19,309 @@
     <script
             src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js">
     </script>
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0d6efd, #6610f2);
+        }
+
+        .login-container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .welcome-section {
+            min-height: 560px;
+            padding: 50px;
+            color: white;
+
+            background:
+                    linear-gradient(
+                            rgba(13, 110, 253, 0.70),
+                            rgba(102, 16, 242, 0.70)
+                    ),
+                    url("images/mca-login-background.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .welcome-section h1 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .mca-title {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 8px 30px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 8px;
+        }
+
+        .welcome-text {
+            font-size: 17px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 18px 0;
+            font-size: 16px;
+        }
+
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        .login-section {
+            min-height: 560px;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-section h2 {
+            font-weight: 700;
+            color: #173b7a;
+        }
+
+        .login-subtitle {
+            color: #6c757d;
+        }
+
+        .login-input {
+            border-radius: 12px;
+            padding: 13px;
+        }
+
+        .login-button {
+            border: none;
+            border-radius: 12px;
+            padding: 13px;
+            font-weight: 600;
+            font-size: 16px;
+
+            background: linear-gradient(
+                    135deg,
+                    #0d6efd,
+                    #6610f2
+            );
+        }
+
+        .login-button:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+
+            .login-container {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .welcome-section {
+                min-height: auto;
+                padding: 35px;
+            }
+
+            .login-section {
+                min-height: auto;
+                padding: 40px 30px;
+            }
+
+            .welcome-section h1 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
-<body class="bg-light" ng-controller="LoginController">
+<body ng-controller="LoginController">
 
-<div class="container">
+<div class="login-container">
 
-    <div class="row justify-content-center mt-5">
+    <div class="row g-0">
 
-        <div class="col-md-5">
+        <!-- LEFT SIDE -->
+        <div class="col-md-6">
 
-            <div class="card shadow">
+            <div class="welcome-section">
 
-                <div class="card-body p-4">
+                <div class="college-icon">
+                    🎓
+                </div>
 
-                    <h2 class="text-center mb-4">
-                        Department Login
+                <h1>
+                    Smart Department
+                </h1>
+
+                <h1>
+                    Management System
+                </h1>
+
+                <div class="mca-title">
+                    MCA
+                </div>
+
+                <p class="welcome-text">
+                    Welcome to the centralized department portal
+                    for managing academic activities and
+                    communication.
+                </p>
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        📢
+                    </div>
+
+                    <span>
+                        Department Announcements
+                    </span>
+
+                </div>
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        🎉
+                    </div>
+
+                    <span>
+                        Department Events
+                    </span>
+
+                </div>
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        💼
+                    </div>
+
+                    <span>
+                        Placement Opportunities
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="col-md-6">
+
+            <div class="login-section">
+
+                <div class="text-center mb-4">
+
+                    <h2>
+                        Welcome Back
                     </h2>
 
-                    <form ng-submit="login()">
+                    <p class="login-subtitle">
+                        Login to access your department portal
+                    </p>
 
-                        <div class="mb-3">
+                </div>
 
-                            <label class="form-label">
-                                Username
-                            </label>
 
-                            <input type="text"
-                                   class="form-control"
-                                   ng-model="loginData.username"
-                                   required>
+                <form ng-submit="login()">
 
-                        </div>
+                    <!-- Username -->
+                    <div class="mb-4">
 
-                        <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Username / Register Number
+                        </label>
 
-                            <label class="form-label">
-                                Password
-                            </label>
+                        <input
+                                type="text"
+                                class="form-control login-input"
+                                placeholder="Enter your username"
+                                ng-model="loginData.username"
+                                required>
 
-                            <input type="password"
-                                   class="form-control"
-                                   ng-model="loginData.password"
-                                   required>
+                    </div>
 
-                        </div>
 
-                        <div class="alert alert-danger"
-                             ng-if="errorMessage">
+                    <!-- Password -->
+                    <div class="mb-4">
 
-                            {{errorMessage}}
+                        <label class="form-label fw-semibold">
+                            Password
+                        </label>
 
-                        </div>
+                        <input
+                                type="password"
+                                class="form-control login-input"
+                                placeholder="Enter your password"
+                                ng-model="loginData.password"
+                                required>
 
-                        <button type="submit"
-                                class="btn btn-primary w-100">
+                    </div>
 
-                            Login
 
-                        </button>
+                    <!-- Error Message -->
+                    <div
+                            class="alert alert-danger"
+                            ng-if="errorMessage">
 
-                    </form>
+                        {{errorMessage}}
+
+                    </div>
+
+
+                    <!-- Login Button -->
+                    <button
+                            type="submit"
+                            class="btn btn-primary login-button w-100">
+
+                        🔐 Login
+
+                    </button>
+
+                </form>
+
+
+                <div class="footer-text">
+
+                    Smart Department Management System
+                    <br>
+                    MCA Department Portal
 
                 </div>
 
@@ -91,6 +332,7 @@
     </div>
 
 </div>
+
 
 <script src="js/login.js"></script>
 
