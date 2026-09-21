@@ -3,6 +3,7 @@ var app = angular.module("departmentApp", []);
 app.controller("MainController", function ($scope, $http) {
     // Get logged-in user details
     $scope.newStudent = {};
+    console.log("Angular newStudent initialized:", $scope.newStudent);
     $scope.loggedInUser = localStorage.getItem("username");
     $scope.loggedInRole = localStorage.getItem("role");
     $http.defaults.headers.common["Role"] = $scope.loggedInRole;
