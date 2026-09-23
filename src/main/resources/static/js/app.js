@@ -135,7 +135,70 @@ app.controller("MainController", function ($scope, $http) {
                 alert("Failed to add announcement.");
 
             });
+
     };
+    $scope.editAnnouncement = function (announcement) {
+
+        var updatedAnnouncement = {
+            title: prompt("Enter announcement title:", announcement.title),
+            message: prompt("Enter announcement message:", announcement.message),
+            date: prompt("Enter announcement date:", announcement.date)
+        };
+
+        if (!updatedAnnouncement.title ||
+            !updatedAnnouncement.message ||
+            !updatedAnnouncement.date) {
+            alert("All fields are required.");
+            return;
+        }
+
+        $http.put("/announcements/" + announcement.id, updatedAnnouncement)
+            .then(function (response) {
+
+                var index = $scope.announcements.indexOf(announcement);
+
+                $scope.announcements[index] = response.data;
+
+                alert("Announcement updated successfully!");
+
+            })
+            .catch(function (error) {
+
+                console.log("Error updating announcement:", error);
+
+                alert("Failed to update announcement.");
+
+            });
+    };
+
+
+    $scope.deleteAnnouncement = function (id) {
+
+        if (!confirm("Are you sure you want to delete this announcement?")) {
+            return;
+        }
+
+        $http.delete("/announcements/" + id)
+            .then(function () {
+
+                $scope.announcements = $scope.announcements.filter(
+                    function (announcement) {
+                        return announcement.id !== id;
+                    }
+                );
+
+                alert("Announcement deleted successfully!");
+
+            })
+            .catch(function (error) {
+
+                console.log("Error deleting announcement:", error);
+
+                alert("Failed to delete announcement.");
+
+            });
+    };
+
     $scope.newEvent = {};
 
     $scope.addEvent = function () {

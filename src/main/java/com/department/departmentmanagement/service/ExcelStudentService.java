@@ -75,6 +75,9 @@ public class ExcelStudentService {
             student.setSection(
                     getCellValue(row.getCell(5))
             );
+            student.setPassword(
+                    getCellValue(row.getCell(6))
+            );
 
             // Save student to database
             studentRepository.save(student);

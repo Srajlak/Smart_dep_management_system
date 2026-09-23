@@ -26,8 +26,23 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         return announcementRepository.findAll();
     }
 
+
     @Override
     public void deleteAnnouncement(Long id) {
         announcementRepository.deleteById(id);
+    }
+    @Override
+    public Announcement updateAnnouncement(Long id, Announcement announcement) {
+
+        Announcement existingAnnouncement =
+                announcementRepository.findById(id)
+                        .orElseThrow(() ->
+                                new RuntimeException("Announcement not found"));
+
+        existingAnnouncement.setTitle(announcement.getTitle());
+        existingAnnouncement.setMessage(announcement.getMessage());
+        existingAnnouncement.setDate(announcement.getDate());
+
+        return announcementRepository.save(existingAnnouncement);
     }
 }

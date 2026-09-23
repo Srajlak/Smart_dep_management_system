@@ -10,5 +10,7 @@ public interface AnnouncementService {
 
     List<Announcement> getAllAnnouncements();
 
+    Announcement updateAnnouncement(Long id, Announcement announcement);
+
     void deleteAnnouncement(Long id);
 }

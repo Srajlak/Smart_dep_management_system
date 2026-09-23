@@ -29,6 +29,16 @@ public class AnnouncementController {
         return announcementService.getAllAnnouncements();
     }
 
+    // UPDATE ANNOUNCEMENT
+    @PutMapping("/{id}")
+    public Announcement updateAnnouncement(
+            @PathVariable Long id,
+            @RequestBody Announcement announcement) {
+
+        return announcementService.updateAnnouncement(id, announcement);
+    }
+
+    // DELETE ANNOUNCEMENT
     @DeleteMapping("/{id}")
     public String deleteAnnouncement(
             @PathVariable Long id) {
