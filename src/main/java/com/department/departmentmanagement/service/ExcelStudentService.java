@@ -42,15 +42,17 @@ public class ExcelStudentService {
                 continue;
             }
 
-            Student student = new Student();
+            String registerNumber = getCellValue(row.getCell(0));
+
+            Student student = studentRepository
+                    .findByRegisterNumber(registerNumber)
+                    .orElse(new Student());
 
             // Assign the student to Department ID 1
             student.setDepartment(department);
 
             // Read student details from Excel
-            student.setRegisterNumber(
-                    getCellValue(row.getCell(0))
-            );
+            student.setRegisterNumber(registerNumber);
 
             student.setName(
                     getCellValue(row.getCell(1))
