@@ -39,9 +39,18 @@
 
                         <div class="card-body">
 
-                            <h5 class="card-title">
-                                {{placement.companyName}}
+
+                            <h5 class="card-title fw-bold">
+                                {{placement.studentName}}
                             </h5>
+
+                            <p class="text-muted small mb-2">
+                                Register No: {{placement.registerNumber}}
+                            </p>
+
+                            <h6 class="text-success">
+                                {{placement.companyName}}
+                            </h6>
 
                             <p>
                                 <strong>Job Role:</strong>
@@ -113,9 +122,28 @@
 
             </div>
 
+
             <button type="submit" class="btn btn-success">
                 Add Placement
             </button>
+
+            <div class="mb-3">
+                <label class="form-label">Student Name</label>
+                <input type="text"
+                       class="form-control"
+                       ng-model="newPlacement.studentName"
+                       placeholder="Enter student name"
+                       required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Register Number</label>
+                <input type="text"
+                       class="form-control"
+                       ng-model="newPlacement.registerNumber"
+                       placeholder="Enter register number"
+                       required>
+            </div>
 
         </form>
 
