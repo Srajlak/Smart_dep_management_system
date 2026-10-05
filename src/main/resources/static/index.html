@@ -101,6 +101,9 @@
                     <a class="nav-link" href="#placements">Placements</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#placement-achievers">Achievers</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#announcements">
                         Announcements
                     </a>
@@ -875,6 +878,65 @@
     </form>
 
 </div>
+    <!-- Placement Achievers Section -->
+    <div class="container mt-5 mb-5" id="placement-achievers">
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <h2 class="mb-4">Placement Achievers</h2>
+
+                <div class="alert alert-info"
+                     ng-if="achievers.length === 0">
+                    No placement achievers available.
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-4"
+                         ng-repeat="achiever in achievers">
+
+                        <div class="card h-100 shadow-sm border-0">
+
+                            <img ng-src="{{achiever.photoUrl}}"
+                                 class="card-img-top"
+                                 style="height:300px; object-fit:contain; background:#f8f9fa;"
+                                 alt="Placement Achiever">
+
+                            <div class="card-body text-center">
+
+                                <h5 class="card-title">
+                                    {{achiever.studentName}}
+                                </h5>
+
+                                <p class="text-muted mb-1">
+                                    {{achiever.studentClass}}
+                                </p>
+
+                                <p class="mb-1">
+                                    <strong>Company:</strong>
+                                    {{achiever.companyName}}
+                                </p>
+
+                                <p>
+                                    <strong>Placement Year:</strong>
+                                    {{achiever.placementYear}}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 <!-- Bootstrap JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
