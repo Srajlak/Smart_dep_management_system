@@ -386,4 +386,37 @@ app.controller("MainController", function ($scope, $http) {
 
             });
     };
+    // Placement Achievers
+    $scope.achievers = [];
+
+    $http.get("/placement-achievers")
+        .then(function (response) {
+            $scope.achievers = response.data;
+        })
+        .catch(function (error) {
+            console.log("Error loading placement achievers:", error);
+        });
+    // Placement Achiever
+    $scope.newAchiever = {};
+
+    $scope.addAchiever = function () {
+
+        $http.post("/placement-achievers", $scope.newAchiever)
+            .then(function (response) {
+
+                $scope.achievers.push(response.data);
+
+                $scope.newAchiever = {};
+
+                alert("Placement achiever added successfully!");
+
+            })
+            .catch(function (error) {
+
+                console.log("Error adding placement achiever:", error);
+
+                alert("Failed to add placement achiever.");
+
+            });
+    };
 });
